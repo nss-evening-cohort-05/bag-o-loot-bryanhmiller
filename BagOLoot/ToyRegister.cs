@@ -20,9 +20,13 @@ namespace BagOLoot
       return newToy;
     }
 
-    public void RevokeToy(Child kid, Toy toy)
+    public void RevokeToy(Child kid, string toy)
     {
-      _toys.Remove(toy);
+      Toy revokedToy = new Toy(){
+        name = toy,
+        child = kid
+      };
+      _toys.Remove(revokedToy);
     }
 
     public List<Toy> GetToysForChild(Child kid)

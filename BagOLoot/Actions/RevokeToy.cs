@@ -20,16 +20,18 @@ namespace BagOLoot.Actions
       Console.Write ("> ");
       string childName = Console.ReadLine();
       Child kid = book.GetChild(children[int.Parse(childName)-1].name);
+
+      Console.WriteLine ("Choose toy");
       
       var toys = bag.GetToysForChild(kid).ToArray();
       foreach (Toy toy in toys)
       {
           Console.WriteLine($"{Array.IndexOf(toys,toy)+1}. {toy.name}");
       }
-      Console.WriteLine ("Enter toy");
+
       Console.Write ("> ");
       string toyName = Console.ReadLine();
-      bag.Add(toyName, kid);
+      bag.RevokeToy(kid, toyName);
     }
   }
 }
