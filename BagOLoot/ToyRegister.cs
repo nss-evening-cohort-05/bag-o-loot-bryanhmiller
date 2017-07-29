@@ -22,7 +22,7 @@ namespace BagOLoot
 
     public void RevokeToy(Child kid, Toy toy)
     {
-
+      _toys.Remove(toy);
     }
 
     public List<Toy> GetToysForChild(Child kid)

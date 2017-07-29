@@ -23,19 +23,24 @@ namespace BagOLoot.Tests
 
             // Add a toy for the child
             Toy toy = _register.Add("Silly Putty", kid);
+
+            // Assert
             Assert.True(toy != null);
+            Assert.True(kid.name == "Terell");
+            Assert.True(toy.name == "Silly Putty");
         }
 
         [Fact]
         public void RevokeToyFromChild()
         {
+            // Arrange
             Child kid = _book.AddChild("Terell");
             Toy toy = _register.Add("Silly Putty", kid);
+            // Action
             _register.RevokeToy(kid, toy);
             List<Toy> toysForTerell = _register.GetToysForChild(kid);
-
+            // Assert
             Assert.DoesNotContain(toy, toysForTerell);
-
         }
     }
 }
