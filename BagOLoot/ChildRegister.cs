@@ -23,6 +23,12 @@ namespace BagOLoot
         public List<Child> GetChildren () => _children;
 
         public Child GetChild (string name) =>  _children.SingleOrDefault(kid => kid.name == name);
+
+        public List<Child> GetChildrenWithToys(List<Toy> toys)
+        {
+            var listOfToysOwnedByChildren = toys.Where(toy => toy.child != null).ToList();
+        }
+
         
     }
 }

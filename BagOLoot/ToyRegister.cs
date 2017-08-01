@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BagOLoot
 {
@@ -20,18 +21,14 @@ namespace BagOLoot
       return newToy;
     }
 
-    public void RevokeToy(Child kid, string toy)
+    public void RevokeToy(Child kid, string toyName)
     {
-      Toy revokedToy = new Toy(){
-        name = toy,
-        child = kid
-      };
-      _toys.Remove(revokedToy);
+      _toys.RemoveAll(toy => toy.child == kid && toy.name == toyName);
     }
 
     public List<Toy> GetToysForChild(Child kid)
     {
-      return new List<Toy>();
+      return _toys.Where(toy => toy.child == kid).ToList();     
     }
   }
 }

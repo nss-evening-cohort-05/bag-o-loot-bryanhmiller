@@ -38,8 +38,12 @@ namespace BagOLoot
                     case 3:
                         RevokeToy.DoAction(bag, book);
                         break;
+                    // Menu option 4: Display list of toys for a child
+                    case 4:
+                        ReviewToyList.DoAction(bag, book);
+                        break;
                 }
-            } while (choice != 3);
+            } while (choice !=7);
         }
     }
 }
