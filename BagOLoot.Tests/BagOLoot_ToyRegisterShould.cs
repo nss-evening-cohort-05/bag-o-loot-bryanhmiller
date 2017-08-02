@@ -44,6 +44,29 @@ namespace BagOLoot.Tests
         }
 
         [Fact]
+        public void OnlyListOfChildrenWhoAreGettingToys()
+        {
+            // Arrange
+            Child kid = _book.AddChild("Terell");
+            Child kid2 = _book.AddChild("Bob");
+            Child kid3 = _book.AddChild("Martin");
+            Toy toy = _register.Add("Silly Putty", kid);
+            Toy toy1 = _register.Add("Goo", kid);
+            Toy toy2 = _register.Add("Goo", kid2);
+            // Action
+            List<Toy> toysForTerell = _register.GetToysForChild(kid);
+            List<Toy> toysForBob = _register.GetToysForChild(kid2);
+            List<Toy> toysForMartin = _register.GetToysForChild(kid3);
+            // Assert
+            Assert.Contains(toy, toysForTerell);
+            Assert.Contains(toy1, toysForTerell);
+            Assert.Contains(toy2, toysForBob);
+            Assert.True(toysForTerell.Count == 2);
+            Assert.True(toysForBob.Count == 1);
+            Assert.True(toysForMartin.Count == 0);
+        }
+
+        [Fact]
         public void ReviewListOfToyForAChild()
         {
             // Arrange

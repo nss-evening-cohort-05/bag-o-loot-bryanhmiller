@@ -42,6 +42,14 @@ namespace BagOLoot
                     case 4:
                         ReviewToyList.DoAction(bag, book);
                         break;
+                    // Menu option 5: Display list of toys for a child
+                    case 5:
+                        SetDelivery.DoAction(book);
+                        break;
+                    // Menu option 5: Display list of toys for a child
+                    case 6:
+                        ReportDelivery.DoAction(bag, book);
+                        break;
                 }
             } while (choice !=7);
         }
