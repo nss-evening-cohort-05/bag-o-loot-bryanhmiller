@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace BagOLoot.Tests
@@ -54,16 +55,11 @@ namespace BagOLoot.Tests
             Toy toy1 = _register.Add("Goo", kid);
             Toy toy2 = _register.Add("Goo", kid2);
             // Action
-            List<Toy> toysForTerell = _register.GetToysForChild(kid);
-            List<Toy> toysForBob = _register.GetToysForChild(kid2);
-            List<Toy> toysForMartin = _register.GetToysForChild(kid3);
+            var childrenGettingToys = _book.GetChildrenWhoseToysHaveBeenDelivered();
             // Assert
-            Assert.Contains(toy, toysForTerell);
-            Assert.Contains(toy1, toysForTerell);
-            Assert.Contains(toy2, toysForBob);
-            Assert.True(toysForTerell.Count == 2);
-            Assert.True(toysForBob.Count == 1);
-            Assert.True(toysForMartin.Count == 0);
+            Assert.Contains("Terell", childrenGettingToys);
+            Assert.Contains("Bob", childrenGettingToys);
+            Assert.DoesNotContain("Martin", childrenGettingToys);
         }
 
         [Fact]

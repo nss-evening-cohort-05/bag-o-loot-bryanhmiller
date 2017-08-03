@@ -23,7 +23,6 @@ namespace BagOLoot.Actions
             Console.WriteLine($"  {Array.IndexOf(toys,toy)+1}. {toy.name}");
         }
         Console.WriteLine (" ");
-
       }
 
     Console.Write ("Press any key to return to the main menu > ");

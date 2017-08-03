@@ -34,10 +34,5 @@ namespace BagOLoot
         {
             return _children.Where(child => child.delivered == true).ToList();
         }
-
-        // public List<Child> GetListOfChildrenWhoHaveToysAssignedToThem(Toy toy)
-        // {
-        // return _children.Where(kid => kid.toy > 0).ToList();
-        // }
     }
 }
